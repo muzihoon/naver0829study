@@ -4,7 +4,7 @@
 
 git-bash
 
-1. git lmit - git 과 연동할 폴더 초기화
+1. git init - git 과 연동할 폴더 초기화
 2. git remote add origin https://github.com/muzihoon/naver0829study.git -git 원격저장소에 새로 연결 , 클론하고
 3. git branch - branch 조회
 4. git add . 또는 git add 파일명 : 해당 파일들을 로컬 저장소에 추가
