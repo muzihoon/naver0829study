@@ -18,25 +18,32 @@ public class ExamEx8 {
 		 *  : 산술연산자를 사용해서 출력해보기
 		 *   문자열로 가져오면 계산불가능. Integer로 변경해야한다. 
 		 * */
-		// a =args[0]/10000 =567
-		// b =(args[0]%10000)/1000 =4 
-		// c =(args[0]%10000%1000)/100=3
-		// d =(args[0]%10000%1000%100)/10=2
-		// e =(args[0]%10000%1000%100%10)/1=1
 		
-		int total = Integer.parseInt(args[0]);
-		int a=total/10000;//만원
-		int b=(total%10000)/1000;//천원
-		int c=(total%10000%1000)/100;//백원
-		int d=(total%10000%1000%100)/10;//십원
-		int e=(total%10000%1000%100%10)/1;//일원
-
-		System.out.println("총 금액="+args[0]+"원");
-		System.out.printf("만원=%d장\n",a);
-		System.out.printf("천원=%d장\n",b);
-		System.out.printf("백원=%d개\n",c);
-		System.out.printf("십원=%d개\n",d);
-		System.out.printf("일원=%d개\n",e);
+		//파라미터에서 월 급여를 읽어서 (문자열) 정수타입으로 변환한다.
+		
+		//내가 한거
+//		int money = Integer.parseInt(args[0]);
+//		int a=money/10000;//만원
+//		int b=(money%10000)/1000;//천원
+//		int c=(money%10000%1000)/100;//백원
+//		int d=(money%10000%1000%100)/10;//십원
+//		int e=(money%10000%1000%100%10)/1;//일원
+//
+//		System.out.println("총 금액="+args[0]+"원");
+//		System.out.printf("만원=%d장\n",a);
+//		System.out.printf("천원=%d장\n",b);
+//		System.out.printf("백원=%d개\n",c);
+//		System.out.printf("십원=%d개\n",d);
+//		System.out.printf("일원=%d개\n",e);
+		
+		int money = Integer.parseInt(args[0]);
+		System.out.println("월 급여 :"+money);
+		System.out.println("만원짜리 :"+money/10000+"장");
+		System.out.println("천원짜리 :"+(money%10000)/1000+"장");
+		System.out.println("백원짜리 :"+(money%1000)/100+"개");
+		System.out.println("십원짜리 :"+(money%100)/10+"개");
+		System.out.println("일원짜리 :"+(money%10)+"개");
+		
 	}
 
 }
