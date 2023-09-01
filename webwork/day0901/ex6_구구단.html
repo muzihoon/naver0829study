@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        구구단 숫자 2~9까지 입력을 받아서 해당 구구단을 출력하시오. 
+        단, 2~9 사이의 값이 아닐경우 '이미지(아무거나) 출력하기'
+        입력은 prompt 로 받으면 된다.
+     -->
+
+     <script>
+        // 2~9 숫자를 입력 받는다. > prompt 사용 
+        // 입력받은 숫자는 바깥 반복문에 적용된다.
+        // i x j 의 값을 계산한다.
+        // 계산 한 구구단을 출력한다.
+
+        let dan = prompt("숫자를 입력하세요");
+        let num = Number(dan);
+        console.log(typeof(num));
+        document.write(`<b> ${num} 단</b><br>`)
+
+        if(9<=num && num>=2) // num이 2보다 작거나 9보다 클 경우
+        {
+            //2~9사이가 아닐경우 출력
+            document.write(`<img alt='이미지 출력' src="../mycar/mycar1.png" width="400px">`);
+        }
+        else
+        {
+            for(let i=1; i<=9; i++)
+            {
+                
+                document.write(`${num}&nbsp; x ${i}&nbsp; = <b>${num*i}</b><br>`);
+            }
+
+        }
+        
+     </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span.one{
+            position: relative;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 
+        start와 end 값을 입력받아 해당 구구단을 출력하시오. 
+        (가로방향 - 자바에서처럼)
+        단, start가 end 보다 클 경우 두 값을 서로 바꾼후 출력하시오.
+        입력은 prompt 로 받으면 된다.
+
+     -->
+     <script>
+        // strat 값과 end 값을 입력받아 숫자로 변경한다.
+        let start = Number(prompt("start 값을 입력해주세요"));
+        console.log(typeof(start));
+        document.write(`<br>start 값 &nbsp; ${start}`);
+
+        let end = Number(prompt("end 값을 입력해주세요"));
+        console.log(typeof(end));
+        document.write(`<br>end 값 &nbsp; ${end}<br>`);3
+
+        // start 값이 end 값 보다 크다면 두 값을 서로 변경한다.
+        let tmp = 0;
+        if(start>end)
+        {
+            console.log(start);
+            tmp=start;
+            start=end;
+            end=tmp;
+            console.log("start:"+start);
+            console.log("end:"+end);
+        }
+
+        // 가로방향으로 출력해야 한다.
+        // 2단  3단   4단 
+        for(let dan=start; dan<=end; dan++)
+            {
+                document.write(`<span class="one">${dan}단<span>`);
+            }
+
+
+        // 구구단을 출력한다. 2
+        for(let i=1; i<=9; i++)
+        {   
+            document.write(`<br>`);
+            for(let dan=start; dan<=end; dan++)
+            {
+                document.write(`<span>${dan}&nbsp; x ${i}&nbsp; = ${dan*i}</span>`);
+                if(dan*i>=10)
+                document.write(`<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
+                else
+                document.write(`<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
+               
+            }
+           
+        }
+
+        
+
+     </script>
+</body>
+</html>

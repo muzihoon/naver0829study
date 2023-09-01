@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Open+Sans:wght@300&family=Single+Day&display=swap" rel="stylesheet">
+
+    <style>
+        body *{/* body 의 모든 하위태그 */
+            font-size: 30px;
+            font-family: 'Jua';
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1> 반복문 for 연습</h1>
+    <script>
+        for(let i=1;i<=5;i++){
+            document.write(`<b>${i}</b>&nbsp; &nbsp;&nbsp;`) // 공백을 스페이스로 하면 원하는대로 안된다. &nbsp; 대신씀 ;까지가 한칸임 
+        }
+    </script>
+    <h1>mycar 의 짝수번지 이미지만 출력하기(width=150)</h1>
+    <script>
+
+        let num = 0;
+        // 짝수번호의 사진만 
+        for(let i=1;i<=10;i++)
+        {
+            if(i%2==0)
+            {
+                document.write(`<img src="../mycar/mycar${i}.png" width=150 border="2" hspace="10" vspace="10">`)
+            } //hspace는 양옆으로 공백을 주는것, vspace는 위 아래로 여백 주는것.
+        }
+        
+    </script>
+</body>
+</html>
