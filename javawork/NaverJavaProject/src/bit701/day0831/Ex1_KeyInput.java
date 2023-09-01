@@ -7,7 +7,7 @@ public class Ex1_KeyInput {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//static 변수나 메서드- new로 객체를 생성하지 않고 호출한다.
-		//대표적으ㅗㄹ Math 클래스의 모든 메서드는 static 이다.
+		//대표적으로 Math 클래스의 모든 메서드는 static 이다.
 //		System.out.println("3의 5승 :"+Math.pow(3, 5));
 //		System.out.println("5,7중 더 큰값은 ?"+Math.max(5, 7));
 
