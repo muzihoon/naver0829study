@@ -5,37 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    h3.title{
+        color: blueviolet;
+        background-color: aquamarine;
+        width: 300px;
+        padding-left: 150px; /* 태그 안쪽 여백*/
+        /* margin-left: 150px; */
+    }
+    h4.dan{
+        color: olivedrab;
+        font-family: 'Comic Sans MS';
+        margin-left: 100px;/* 태그 바깥쪽 여백*/
+    }
+
+</style>
 <body>
     <!-- 
         구구단 숫자 2~9까지 입력을 받아서 해당 구구단을 출력하시오. 
         단, 2~9 사이의 값이 아닐경우 '이미지(아무거나) 출력하기'
         입력은 prompt 로 받으면 된다.
      -->
-
+     <h2>구구단 입력받아 출력하기</h2>
      <script>
         // 2~9 숫자를 입력 받는다. > prompt 사용 
         // 입력받은 숫자는 바깥 반복문에 적용된다.
         // i x j 의 값을 계산한다.
         // 계산 한 구구단을 출력한다.
-
-        let dan = prompt("숫자를 입력하세요");
-        let num = Number(dan);
-        console.log(typeof(num));
-        document.write(`<b> ${num} 단</b><br>`)
-
-        if(9<=num && num>=2) // num이 2보다 작거나 9보다 클 경우
+        
+        
+        let dan = Number(prompt("숫자를 입력하세요")); // prompt 스트링으로 출력이 된다. +는 문자열로 합쳐지는 문제가 생길 수 있다.
+        // let num = Number(dan); // 입력받자마자 Number로 변경하면  + 같은 문제를 방지 할 수 있다.
+        console.log(typeof(dan));
+        
+        if(2<dan && dan>9) // num이 2보다 작거나 9보다 클 경우
         {
             //2~9사이가 아닐경우 출력
-            document.write(`<img alt='이미지 출력' src="../mycar/mycar1.png" width="400px">`);
+           document.write(`<img alt="이미지 출력" src="../mycar/mycar1.png" width="400px">`);
         }
         else
         {
+            let s="<h3 class='title'> ** "+dan+" 단 **</h3><br>";
             for(let i=1; i<=9; i++)
             {
-                
-                document.write(`${num}&nbsp; x ${i}&nbsp; = <b>${num*i}</b><br>`);
+                s+=`<h4 class='dan'>${dan} x ${i} = ${dan*i}</h4>`;
             }
-
+                document.write(s);
         }
         
      </script>

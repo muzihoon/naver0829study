@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Open+Sans:wght@300&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        div#msg{
+            font-family: 'Gamja Flower';
+            font-size: 30px;
+            margin-top: 30px; /* 바깥쪽의 위쪽여백 */
+            color: palevioletred;
+
+        }
+    </style>
+</head>
+<body> 
+    <input type="text" id="txtmsg">
+    <input type="button" id="btn1" value="읽기">
+    <div id="msg">Message 출력되는 곳</div>
+
+    <script>
+// body 아래에 주는경우, body 위에 주는경우는 head 안에 주고 반드시 window.onload로 해야한다.
+        let t=document.getElementById("txtmsg");
+        let b=document.getElementById("btn1");
+        let msg=document.getElementById("msg");
+
+        //버튼 이벤트 - 버튼 클릭시 해당 함수가 호출되는 구조.
+        b.onclick=function(){
+            //입력한 문자열을 가져온다.
+            let data=t.value;
+            
+            //msg 에 출력한다
+            // msg.innerHTML // 이건 HTML도 인식함. 태그도 적용하려면 HTML로 해야함
+            // msg.innerText // 이건 전부 텍스트로 나옴. 태그도 문자열로 출력
+            
+            // msg.innerHTML=data; 
+            // msg.innerText="<u>"+data+"</u>"; 
+            // msg.innerHTML="<u>"+data+"</u>"; 
+            msg.innerHTML+="<br><u>"+data+"</u>"; // += : 기존 데이타에 추가한다
+
+
+            //입력한 값을 지운 후 포커스를 준다.
+            t.value=""; // 입력칸을 지운다.
+            t.focus(); // 커서가 자동으로 이동한다. 바로 다시 입력가능
+        }
+    </script>
+</body>
+</html>
