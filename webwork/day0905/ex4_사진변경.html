@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #buttons{
+        /* position: absolute; */
+        /* margin-left: 40px;
+        margin-top: 40px; */
+    }
+
+    #buttons button{
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+
+    #photo{
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <div id="buttons">
+        <button id="btnplus">+</button>
+        <button id="btnminus">-</button>
+        <button id="btnrnd">?</button>
+        <br><br>
+        현재 사진 너비: <span id="fsize"></span>
+    </div>
+    <img src="../연예인사진/17.jpg" id="photo" style="width: 300px">
+
+    <script>
+        // 3개의 버튼, 점점작게, 점점크게, 랜덤 
+        //  점점작게 : 사진이 5px씩 줄어든다.(50px보다 클 경우에만 변경)
+        //  점점크게 : 사진이 5px씩 커진다(600px보다 작을 경우에만 변경)
+        //  랜덤 : 1~20 사이의 난수를 구한 후 해당 사진으로 변경하기
+
+        //+버튼
+        document.getElementById("btnplus").onclick=function(){
+            //포토와 연결한다. 
+            let p=document.getElementById("photo");
+            //포토의 width 사이즈를 정수로 구한다.
+            let ps=parseInt(p.style.width,10);
+            //구한값을 누를때마다 +5px 하게 한다. 
+            if(ps<600)
+            {
+                ps+=5;
+                //속성에 변경되도록 적용 한다.
+                p.style.width=`${ps}px`;
+                fsize.innerText=ps;
+            }
+            console.log(ps)
+
+        }
+
+        //-버튼
+        document.getElementById("btnminus").onclick=function(){
+            //포토와 연결한다. 
+            let p=document.getElementById("photo");
+            //포토의 width 사이즈를 정수로 구한다.
+            let ps=parseInt(p.style.width,10);
+            //구한값을 누를때마다 -5px 하게 한다. 
+            if(ps>50)
+            {
+                ps-=5;
+                //속성에 변경되도록 적용 한다.
+                p.style.width=`${ps}px`;
+            }
+            console.log(ps)
+
+        }
+
+        //?버튼
+        document.getElementById("btnrnd").onclick=function(){
+            //포토와 연결한다. 
+            let p=document.getElementById("photo");
+            //1~20 사이의 난수를 생성한다.
+            let rnd=parseInt(Math.random()*20)+1;
+            //이미지 변경
+            p.setAttribute("src",`../연예인사진/${rnd}.jpg`);
+            
+        }
+
+
+
+    </script>
+</body>
+</html>

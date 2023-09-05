@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Open+Sans:wght@300&family=Single+Day&display=swap" rel="stylesheet">
+    
+    <style>
+        input#txt{
+            font-family: 'Gamja Flower';
+            font-size: 30px;
+            color: dodgerblue;
+            width: 70px;
+            margin-top: 35px;
+            
+        }
+
+        div#msg{
+            font-family: 'Gamja Flower';
+            color: dodgerblue;
+            border: 2px solid gray;
+            height: 400px;
+            padding: 20px 10px;/* top left*/
+            font-size: 40px;
+            margin-top: 35px;
+        }
+
+        #msg hr{
+            border: 2px solid dodgerblue;
+        }
+        
+    </style>
+    <!-- <script>
+        window.onload=function(){
+
+            document.getElementById("btnrnd").onclick=function(){}
+            //1~100 사이의 난수구하기
+            rnd=parseInt((Math.random()*100))+1;
+            //console 출력
+            console.log(rnd);
+        }
+    </script> -->
+</head>
+<body>
+    <input type="button" value="새로운 난수 발생하기" id="btnrnd">
+    <br>
+    <input type="text" id="txt">
+    <input type="button" id="sub" value="제출">
+    <div id="msg">1~100의 숫자를 입력해주세요</div>
+    <br><br>
+    <img id="img" src="" width="300"></img>
+    <script>
+        // 난수 생성 버튼2
+        //입력칸 - 제출 칸
+        //50 보다 큽니다 정답입니다.
+        //정답일시 1~15의 무작위 자동차 사진 나오게 
+
+        //변수 선언부
+        let rnd;//난수를 구할 변수
+        let s="";;//이미지 파일을 출력할 변수
+        let count=0;//총 횟수를 카운트
+
+        //태그 생성 -> getElementById로 연결 
+        let msg=document.getElementById("msg");
+        let txt=document.getElementById("txt");
+        let sub=document.getElementById("sub");
+        let img=document.getElementById("img");
+
+
+            window.onload=function(){
+
+            document.getElementById("btnrnd").onclick=function(){}
+            //1~100 사이의 난수구하기
+            rnd=parseInt((Math.random()*100))+1;
+            //console 출력
+            console.log(rnd);
+
+
+            //난수 버튼 이벤트
+            document.getElementById("btnrnd").onclick=function(){
+                //1~100 사이의 난수구하기
+                rnd=parseInt((Math.random()*100))+1;
+                //console 출력
+                console.log(rnd);
+                
+                txt.value="";
+                txt.focus();
+                count=0;
+                msg.innerHTML="";
+                img.setAttribute('src',"");
+                console.log("초기화 완료");
+    
+                //기존의 값이 지워지게 한다.
+                
+            }
+        }
+
+
+     
+
+        
+        //입력된 메세지 출력
+        sub.onclick=function(){
+            let data=txt.value;
+        // count : x 표시  1:
+        // 2 : 
+        // 입력한 숫자가 1~100이 아니면 종료한다.
+        if(data>100 || data<1){
+            msg.innerHTML=`1~100의 숫자를 입력해주세요. <br>입력한 값 : ${data}`;
+         return;
+        }
+        // 총 횟수 : 
+          count++;
+
+        //count 표시, 입력한 값과 난수가 적은지 큰지 비교한다.
+            if(rnd>data)
+            msg.innerHTML+=`<br><br>${count} 회차 : ${data}<br><hr>${data}보다 큽니다.`;
+            else if(rnd<data)
+            msg.innerHTML+=`<br><br>${count} 회차 : ${data}<br><hr>${data}보다 적습니다.`;
+
+        //맞을경우 1~15의 무작위 자동차 사진이 나오게 한다.
+            else
+            {
+                msg.innerHTML= "정답입니다.";
+                let i =parseInt((Math.random()*15))+1;
+                console.log(i);
+                s=`../mycar/mycar${i}.png`;
+                img.setAttribute("src",s);
+
+                //총 횟수를 나오게 한다.
+                msg.innerHTML="<br>정답입니다.<br>총 도전 횟수:"+count;
+            }
+            txt.value="";
+        };
+
+        
+
+    </script>
+</body>
+</html>
