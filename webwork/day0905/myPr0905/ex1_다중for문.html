@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>숫자를 입력하면 그 숫자만큼 행,열로 별표 출력하기</h3>
+    <input type="text" id="su1" size="3">
+    <div style="margin-top: 30px; font-size: 25px;" id="result">111</div>
+    <script>
+        document.getElementById("su1").onkeyup=function(e)
+        {
+            //자바스크립트에서 값을 읽어오는 2가지 방법
+            // console.log(this.value); // this는 자기 자신을 가르킴
+            console.log(e.target.value); // event가 발생되는 target(자기자신)이 입력한 value 값
+            console.log(e.keyCode); // 엔터를 누르면 13이 출력되는걸 알 수 있다.
+            
+            //숫자를 입력하면 그 숫자만큼 행, 열로 별표 출력하기 
+            let num=Number(e.target.value); 
+            console.log(num);
+
+            let s="";
+            for(let i =1;i<=num;i++)
+            {
+                for(let j=1;j<=num;j++)
+                {
+                    s+="*";
+                }
+                s+="<br>";
+            }
+            document.getElementById("result").innerHTML=s;
+            //출력후 텍스트 칸에 남아있는 값 지우기
+            e.target.value="";
+            //포커스가 자동으로 텍스트 칸으로 
+            e.target.focus();
+        }
+
+
+
+    </script>
+</body>
+</html>
