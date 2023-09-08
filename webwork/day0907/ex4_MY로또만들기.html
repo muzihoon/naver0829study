@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+
+    <style>
+
+        body * {
+            font-family: 'Jua';
+            /* text */
+            }
+            
+            #container1{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 500px;
+                height: 310px;
+                background-color: rgb(173, 216, 230);
+            }
+            
+            #container2{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                position: relative;
+                width: 480px;
+                height: 90px;
+               background-color:white; 
+               border-radius: 60px;
+               
+               margin-top: 68px;
+                
+            }
+
+            .lottobtn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 15px; 
+                background-color: rgb(127, 255, 212);
+                width: 150px;
+                height: 40px;
+                border: 2px solid black;
+                border-radius: 10px;
+                
+            }
+
+            #btnrandom {
+                border: none; 
+                background-color: transparent; 
+                padding: 0; 
+                margin: 0; 
+                font-size: 18px;
+                /* font-weight:; */
+            }
+            .box {
+                position: relative;
+                float: left;
+                color: black;
+                width: 60px;
+                height: 60px;
+                margin: 8px;
+                font-size: 30px;
+                background-color: cornflowerblue;
+                border-radius: 100%;
+
+                text-align: center;
+                line-height: 60px;
+            }
+
+            #box1, #box3, #box6{
+
+                background-color: pink;
+            }
+            #box2{
+                background-color: orange;
+                color: white;
+            }
+            #box4{
+                background-color: burlywood;
+                color: white;
+            }
+            #box5{
+                background-color: rgb(97, 8, 97);
+                color: yellow;
+            }
+            #counter {
+                color: rgb(0, 153, 255);
+            }
+            #counter2{
+                color: black;
+                
+            }
+
+            #time{
+                color: rgb(128, 122, 114);
+                font-size: small;
+                font-weight:lighter;
+            }
+    </style>
+
+    <script>
+        // 목표
+        //1. 데이터 클래스를 써라
+        //2. 디자인 따라서 해라. 
+        //3. 실행 횟수도 나와라.
+
+        // 1번 목표 1~45의 숫자를 중복 없이 구한다.
+        // 중복없는 숫자를 오름 차순으로 정렬한다.
+        // 순서대로 출력한다.
+        // document.getElementById("btnrandom")
+
+
+        window.onload=function(){
+            //여러개의 class 요소들을 배열변수로 얻는다.
+            let box=document.querySelectorAll("div.box"); //예제의 키포인트 box 클래스의 모든 쿼리를 선택
+            console.log("box.length :"+box.length); //box의 값
+
+
+            // 로또 숫자 구하기
+        document.getElementById("btnrandom").onclick=function(){
+        for(let i=0;i<box.length;i++)
+            {
+                box[i].innerHTML=parseInt(Math.random()*45)+1;
+                //중복없는 숫자 생성
+                for(let j=0; j<i; j++)
+                {
+                    if(box[i]==box[j])
+                    {
+                        i--;
+                        break;
+                    }
+                }//2중 for문 끝
+            }// for문 끝
+            
+            
+            //오름차순 정렬하기
+            for(let i=0; i<box.length-1; i++)
+            { //6번 검사
+                
+                for(let j=i+1; j<box.length; j++)
+                { // i=0 33 이면  비교대상이 없다
+                    // i=1 15 이면  0과 비교해야한다.
+                    if(parseInt(box[i].innerHTML)>parseInt(box[j].innerHTML)) 
+                    {
+                       
+                        let tmp=parseInt(box[i].innerHTML);
+                        box[i].innerHTML=parseInt(box[j].innerHTML);
+                        box[j].innerHTML=tmp;
+                       
+                   }
+                }
+                
+            }
+        }
+           
+            init_date();// 날짜 함수 호출
+            
+
+        }//onload 끝
+
+
+    </script>
+    
+</head>
+<body>
+    <script>
+        // 날짜 함수
+        function init_date(){
+                let time = document.getElementById("time");
+                let date = new Date();
+                let y = date.getFullYear();
+                let m = date.getMonth()+1;
+                let d = date.getDate();
+                
+
+                // alert(typeof(m))
+                // alert(typeof(d))
+
+                if (d<10 && m<10)
+                {   
+                    let mm="0"+m;
+                    let dd="0"+d;
+                   time.innerHTML=`${y}-${mm}-${dd}`;
+                }
+                else if(m<10)
+                { 
+                   let mm="0"+m;
+                   time.innerHTML=`${y}-${mm}-${d}`;
+
+                }
+
+                else if(d<10)
+                {
+                    let dd="0"+d;
+                   time.innerHTML=`${y}-${m}-${dd}`;
+                }
+                else 
+                time.innerHTML=`${y}-${m}-${d}`;
+            }
+
+      
+    </script>
+
+    <div id="container1">
+        <h2 id="counter">1206<span id="counter2">회  </span><span id="time">xxxx-xx-xx</span></h2>
+        <!-- <div id="time">xxxx-xx-xx</div> -->
+        <div id="container2" >
+            <div class="box" id="box1"></div>
+            <div class="box" id="box2"></div>
+            <div class="box" id="box3"></div>
+            <div class="box" id="box4"></div>
+            <div class="box" id="box5"></div>
+            <div class="box" id="box6"></div>
+        </div>
+        <div class="lottobtn"><button type="button" id="btnrandom">로또 숫자 구하기</button></div>
+        
+    </div>
+
+    
+    
+    
+</body>
+    
+</html>

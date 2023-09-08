@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+
+        div.container{
+            width: 500px;
+            height: 250px;
+            background-color: #b0e0e6;
+        }
+
+        div.container div.title{
+            text-align: center;
+            font-size: 22px;
+            padding-top: 10px;
+
+        }
+
+        div.container div.title b.day{
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        div.container div.box{
+            background-color: white;
+            width: 430px;
+            height: 100px;
+            margin: 0 auto; /* 부모 높이 지정되어 있을때 가운대로 간다. */
+            margin-top: 20px;
+            border-radius: 50px;
+            padding-left: 20px;
+            
+        }
+
+        div.container div.box div.lotto{
+            float: left;
+            width: 63px;
+            height: 63px;
+            border-radius: 100px;
+            background-color: cadetblue;
+            margin-right: 7px;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 63px;
+            font-size: 25px;
+        }
+
+        #btngo{
+            width: 150px;
+            height: 50px;
+            margin: 20px 160px;
+            background-color: aquamarine;
+            font-size: 1.2em; /* 부모태그가 가진 글꼴보다 1.2배 */
+            border: black;
+            border-radius: 10px;
+        }
+
+    </style>
+
+    <script> //이벤트를 body 아니고 다른곳에 줘야할때는 onload 함수안에 있어야 한다.
+        window.onload=function(){
+            
+            create_lotto();
+
+            document.getElementById("btngo").onclick=create_lotto;
+            // document.getElementById("btngo").onclick=create_lotto(); //자동으로 1번 호출된다.
+        }
+
+         function create_lotto()
+        {
+            console.log("작동 완료")
+            //1~45사이의 중복되지 않는 6개의 숫자를 구해라
+            let lotto_array=new Array(6);
+            for(let i=0; i<lotto_array.length;i++)
+            {
+                lotto_array[i]=parseInt(Math.random()*45)+1;
+                //중복처리
+                for(let j=0;j<i;j++)
+                {
+                    if(lotto_array[i==lotto_array[j]])
+                    {
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            //순서대로 오름차순 정렬
+            for(let i=0;i<lotto_array.length-1;i++)
+            {
+                for(let j=i+1;j<lotto_array.length;j++)
+                {
+                    if(lotto_array[i]>lotto_array[j])
+                    {
+                        let tmp=lotto_array[i];
+                        lotto_array[i]=lotto_array[j]
+                        lotto_array[j]=tmp;
+
+                    }
+                }
+            }
+
+
+            //div.lotto 여러개의 요소값을 배열형태로 얻어보자. class를 활용해서
+            let div_lotto=document.querySelectorAll("div.lotto");
+
+
+            //아이디로 얻으면 하나씩 다 얻어야 해서, 요소의 값을 배열형태로 가져오는거라 
+
+            for(let i=0; i<div_lotto.length;i++)
+            {
+                div_lotto[i].innerHTML=lotto_array[i];
+            }
+            
+            //div.lotto 의 배경색을 rgb 를 이용해서 임의로 변경되게 해보자.
+            for(let i=0; i<div_lotto.length; i++)
+            {
+                let r=parseInt(Math.random()*256);
+                let g=parseInt(Math.random()*256);
+                let b=parseInt(Math.random()*256);
+
+                // div_lotto[i].style.backgroundColor=`rgb(${r},rgb${g},rgb${b})`;
+                div_lotto[i].style.backgroundColor=`rgba(${r},${g},${b},0.5)`; // 반투명
+
+                //글자색은 일부만 변경
+                div_lotto[1].style.color="white";
+                div_lotto[3].style.color="yellow";
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <b style="color: blue;">1026</b>회
+            <b class="day">
+                <script>
+                    let date = new Date();
+                    let y=date.getFullYear();
+                    let m=date.getMonth()+1;
+                    let d=date.getDate();
+                    document.write(`${y}-${m<10?"0"+m:m}-${d<10?"0"+d:d}`);
+                </script>
+            </b>
+         </div>  <!--타이틀 끝 -->
+         <div class="box">
+             <div class="lotto">1</div>
+             <div class="lotto">1</div>
+             <div class="lotto">1</div>
+             <div class="lotto">1</div>
+             <div class="lotto">1</div>
+             <div class="lotto">1</div>
+         </div>
+         <button type="button" id="btngo">로또숫자 생성기</button>
+    </div> <!--컨테이너 끝 -->
+</body>
+</html>
