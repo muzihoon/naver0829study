@@ -10,7 +10,7 @@ public class Korean {
 	//생성자 선언
 	public Korean(String n, String s)
 	{
-		name = n;
-		ssn = s;
+		this.name = n;
+		this.ssn = s;
 	}
 }
