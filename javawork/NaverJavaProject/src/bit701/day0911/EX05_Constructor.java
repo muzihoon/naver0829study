@@ -14,7 +14,7 @@ class Car2
 	//생성자가 private 이므로 생성해서반환해줄 static 메서드가 반드시 필요하다.
 	public static Car2 getInstance()
 	{
-		return new Car2(); // 자기자신은 생성이 가능해서 
+		return new Car2(); // 자기자신은 생성이 가능해서 (같은 클래스니까)
 		//이런 메서드가 반드시 있다.
 	}
 	

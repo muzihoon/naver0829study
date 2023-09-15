@@ -13,6 +13,7 @@ public class Ex10_CallBy {
 	}
 	
 	//Call by Reference
+	//기본형이 아닌 사용자 정의, 참조 타입
 	//모든 배열은 주소가 전달(배열은 무조건 객체 타입으로 인식)
 	public static void changeArray(int []arr)
 	{

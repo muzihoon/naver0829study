@@ -34,7 +34,7 @@ public class Ex12_StudentCallBy {
 	private static int changeInt(int a) 
 	{
 		a=200;
-		return a;
+		return a; 
 	}
 
 }
