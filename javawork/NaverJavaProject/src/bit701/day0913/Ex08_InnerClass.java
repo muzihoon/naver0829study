@@ -23,7 +23,7 @@ class OuterA
 
 	}//내부 끝
 
-	static class InnerB{
+	static class InnerB{ // jdk 17 이하에서는 이렇게 사용하면 될거같은데 ..?
 		int e=50;
 		static int f=60;
 		public void showInnerB()

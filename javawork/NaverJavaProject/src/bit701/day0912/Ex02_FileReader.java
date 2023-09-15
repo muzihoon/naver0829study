@@ -27,7 +27,7 @@ public class Ex02_FileReader {
 				{
 					break;
 				}
-				System.out.println(line);
+				System.out.println(line);//append? 쓰고 \n해야함  콘솔에 추가하는걸 area에 추가하는거로 하면 된다.
 			}
 			
 			
