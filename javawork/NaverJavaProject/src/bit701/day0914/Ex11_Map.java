@@ -16,7 +16,7 @@ public class Ex11_Map {
 		map.put("hp","010-2222-4444");
 		
 		//key 값들을 얻은 후 key 에 해당하는 value를 얻어보자.
-		Set<String> keys=map.keySet();
+		Set<String> keys=map.keySet(); // 모든 키를 set 객체에 담아서 리턴한다.
 		for(String key:keys)
 		{
 			String v=map.get(key);

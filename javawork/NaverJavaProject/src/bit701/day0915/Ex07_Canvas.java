@@ -54,7 +54,7 @@ public class Ex07_Canvas extends JFrame{ //Canvas는 JFrame이 있어야 하는�
 		String imageIcon1="D:\\naver0829\\work_study\\webwork\\이쁜동물이미지\\C7.png";
 		
 		@Override
-		public void paint(Graphics g) {
+		public void paint(Graphics g) { // 이 부분이 실행되는 이유 Canvas 컴포넌트가 화면에 나타날 때(this.setVisible(true);) 여기서 자동으로 호출됨
 			super.paint(g);
 			
 			//원그리기

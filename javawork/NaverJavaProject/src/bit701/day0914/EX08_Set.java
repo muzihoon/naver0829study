@@ -8,8 +8,8 @@ public class EX08_Set {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		Set<String> set=new HashSet<String>(); //비순차적 결과
-		Set<String> set=new TreeSet<String>(); // 순서대로 나옴
+		Set<String> set=new HashSet<String>(); //비순차적 결과
+//		Set<String> set=new TreeSet<String>(); // 순서대로 나옴
 		set.add("red");
 		set.add("blue");
 		set.add("red");

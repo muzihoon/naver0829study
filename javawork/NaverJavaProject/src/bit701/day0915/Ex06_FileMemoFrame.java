@@ -97,11 +97,11 @@ public class Ex06_FileMemoFrame extends JFrame{
 				//System.out.println("파일명:"+dlg.getFile());
 				
 				//취소시 메서드 종료
-				if(dlg.getDirectory()==null)
+				if(dlg.getDirectory()==null) //취소시 널값 들어감
 					return;
 				
 				String fileName=dlg.getDirectory()+dlg.getFile()+".txt";//불러오기는 .txt 빼고
-				String memoText=memoArea.getText();//저장할 내용
+				String memoText=memoArea.getText();//저장할 내용을 변수에 담는다.
 				
 				FileWriter fw=null;
 				try {

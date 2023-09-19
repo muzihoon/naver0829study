@@ -15,6 +15,7 @@ public class Ex04_SwingButton extends JFrame{
 	public Ex04_SwingButton(String title)
 	{	//this로 호출했지만 JFrame 가지고 있던것, 그리고 JFrame도 물려받은 것들
 		super(title);//JFrame의 문자열을 받는 생성자 호출 
+		
 		this.setLocation(300, 100);//프레임의 시작위치
 		this.setSize(300,300);//프레임의 너비, 높이
 		this.getContentPane().setBackground(new Color(200,255,180)); // Background만 이렇게 변경한다. -> Color 상수를 이용해 변경
@@ -27,9 +28,7 @@ public class Ex04_SwingButton extends JFrame{
 
 		//윈도우 이벤트 발생
 		//this.addWindowListener(new WindowLister()) // 이렇게 하면 메서드 8개 다 오버라이드 함. 필요한건 1개지만 
-
-
-
+		
 		//윈도우 이벤트 발생 - 익명내부클래스 형태로 이벤트 구현, 좀 길면 따로 클래스 구현해서 사용해도 괜찮다.
 		this.addWindowListener(new WindowAdapter() { //이렇게 하면 필요한것 한개만 구현 가능 
 			//여기서 클래스를 구현하면 된다. 
@@ -62,7 +61,8 @@ public class Ex04_SwingButton extends JFrame{
 		}
 		
 	}
-	private void setDesign() {
+	
+	private void setDesign() {// 반환타입 없이 필요한 메서드를 호출하기 위한 void 메서드
 		// TODO Auto-generated method stub
 		// 자바에서 제공하는 레이아웃을 안쓰고 직접 위치지정을 할 경우
 		this.setLayout(null);
@@ -77,6 +77,10 @@ public class Ex04_SwingButton extends JFrame{
 		btn2.setBounds(130, 50, 100, 50); //x,y,width,height
 		this.add(btn2);
 		
+		//버튼 생성부
+		////////////////////////////////////////////////////////////////
+		//기능 호출 부 
+		
 		//버튼 1,2는 내부클래스 MyColorButton 의 이벤트를 호출해보자
 		btn1.addActionListener(new MyColorButton());
 		btn2.addActionListener(new MyColorButton());
@@ -88,6 +92,7 @@ public class Ex04_SwingButton extends JFrame{
 		
 		//btn3은 익명 내부클래스 형태로 생성 
 		//가장 많이 쓰는 방법중 하나, 대신 버튼마다 모두 코드가 다르게 된다.
+		//ActionListener를 구현하는 클래스를 생성하지 않고 여기서 바로 사용 가능
 		btn3.addActionListener(new ActionListener() {
 			
 			@Override

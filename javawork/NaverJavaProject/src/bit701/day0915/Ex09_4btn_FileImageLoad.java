@@ -139,7 +139,10 @@ public class Ex09_4btn_FileImageLoad extends JFrame{
 		
 		//버튼을 가진 패널을 프레임 North에 보낸다.
 		this.add("North",p);
+		System.out.println(this);
 		this.add("Center",myCanvas);
+		System.out.println(this);
+		
 		
 		//사진을 Image 로 변환. 초기 시작시 이미지
 		image =new ImageIcon(initImage).getImage();
@@ -154,5 +157,6 @@ public class Ex09_4btn_FileImageLoad extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Ex09_4btn_FileImageLoad s=new Ex09_4btn_FileImageLoad("이미지 뷰어");
+		
 	}
 }
