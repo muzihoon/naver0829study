@@ -1,0 +1,47 @@
+--문제풀기
+--1. emp테이블에서 ename a나 s로 시작하는사람 출력(대소문자 상관없음)
+select ename from emp where lower(ename) like 'a%' or lower(ename) like 's%';
+
+  
+--2. emp테이블에서 ename 에서 두번째 글자가 'A' 인사람 출력
+select ename from emp where ename like '_A%';
+
+
+  
+--3. job 에서 같은 직업군일경우 한번씩만 출력하시오(오름차순으로 출력)
+select distinct job from emp order by 1;
+
+  
+--4. job 종류별로 인원수를 구하시오(인원수의 내림차순으로 출력)
+select job,count(*) count from emp group by job order by count desc;
+
+
+
+--5. job 종류별로 sal 의 평균급여를 구하시오,평균급여의 오름차순으로 출력
+select job, round(avg(sal),1) 평균급여 from emp group by job;
+
+
+
+--6. job 종류별로 sal 의 최대값과 최소값을 구하시오
+select job, max(sal) 최대급여 ,min(sal) 최소급여 from emp group by job order by 최대급여;
+
+
+
+--7. deptno 가 10인경우 '홍보부'
+--   20 인경우 '개발부' 30인경우 '관리부' 부서를 구하여
+--   ename, 부서 를 출력하시오
+select ename 이름 , deptno 부서번호, decode(deptno,10,'홍보부',20,'개발부',30,'관리부') from emp order by 2 ;
+
+  
+--8. 급여(sal)가 sal 의 평균보다 더 높은 사람만 ename 과 sal 을 출력하시오
+select ename , sal from emp where sal>(select avg(sal) from emp) order by 2;
+
+
+
+--9. hiredate 에서 월이 5월인 사람만 ename 과 hiredate 를 출력하시오
+select ename, hiredate from emp where to_char(hiredate,'mm')=5;
+
+
+
+--10. SCOTT 의 급여와 동일하거나 더 많이 받는 사원명과 급여를 출력하라
+select ename 사원명, sal 급여 from emp where sal>=(select sal from emp where ename='SCOTT');
