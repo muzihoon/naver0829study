@@ -10,17 +10,26 @@ create SEQUENCE seq1 start with 1 INCREMENT by 1; -- 1붙터 1씩 증가되는 시퀀스를
 create SEQUENCE seq2 start with 5 INCREMENT by 3 nocache; -- 5부터 3씩 증가, cache 값은 0
 create SEQUENCE seq3 maxvalue 100 nocache; -- start with 와 increment 생략시 1로 초기값 지정
 
+
+
 -- 값 발생을 시키기 
 select seq1.nextval,seq2.nextval,seq3.nextval from dual;
 select seq2.nextval from dual;
+
+
+
 
 -- 시퀀스 제거
 drop SEQUENCE seq1;
 drop SEQUENCE seq2;
 drop SEQUENCE seq3;
 
+
+
 -- 새로운 시퀀스 생성
 create SEQUENCE seq_test nocache;
+
+    
 
 -- table 생성
 
@@ -33,12 +42,16 @@ create table test(
     );
 
 
+
+
 -- 데이터 추가
 -- 일부 데이터만 넣는 경우 컬럼명을 반드시 표기한다.
 insert into test (num,name) values (seq_test.nextval,'카리나');
 
+
 -- 순서대로 모든 컬럼값을 넣는 경우 컬럼명 생략 가능
 insert into test values (seq_test.nextval,'캐서린','AB',67.89,sysdate);
+
 
 -- 제약조건에 안맞는 경우 오류 확인
 insert into test (num,blood) values (seq_test.nextval,'O');
@@ -114,7 +127,7 @@ insert into person values (2,'O'); -- OK
 
 
 
--- 컬럼을 추가, column 이란 단어는  drop r과 rename에 들어간다.
+-- 컬럼을 추가, column 이란 단어는  drop 과 rename에 들어간다.
 alter table person add name varchar2(20);
 alter table person add score number(5,1) default 30.5;
 

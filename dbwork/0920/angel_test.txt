@@ -1,0 +1,89 @@
+--문제
+--테이블 생성 (student) : num 숫자(5),name 문자열(10),height 숫자(5,1),
+--  java 숫자(3) 기본값 10,spring 숫자(3) 기본값 10, ban 문자열(20)
+create table student (
+    num number(5),
+    name varchar2(10),
+    height number(5,1),
+    java number(3)default 10,
+    spring number(3) default 10,
+    ban varchar2(20)
+);
+
+
+
+
+
+--시퀀스 생성  seq_stu  기본(1부터 1씩증가), nocache 추가
+create SEQUENCE seq_stu start with 1 INCREMENT by 1 nocache;
+
+
+
+--제약조건들 추가
+--num  에 primary key 추가(student_pk_nu)
+alter table student add CONSTRAINT student_pk_nu PRIMARY KEY (num);
+
+
+
+--java,spring 은 1~100 만 가능하도록 check 제약조건 추가
+alter table student add CONSTRAINT student_ck_java check (java between 1 and 100);
+alter table student add CONSTRAINT student_ck_spring check (spring between 1 and 100);
+
+
+
+
+
+--ban 은 '햇님반','달님반','별님반' 만 추가할수 있도록 check 추가
+alter table student add CONSTRAINT student_ck_ban check (ban in('햇님반','달님반','별님반'));
+
+
+
+
+--5개 정도만 데이타를 추가해보자
+insert into student values (seq_stu.nextval,'카리나',167.8,95,90,'햇님반');
+insert into student values (seq_stu.nextval,'혜린',167.8,95,90,'달님반');
+insert into student values (seq_stu.nextval,'하니',167.8,95,90,'별님반');
+insert into student values (seq_stu.nextval,'혜인',167.8,95,90,'달님반');
+insert into student values (seq_stu.nextval,'다니엘',167.8,95,90,'별님반');
+insert into student values (seq_stu.nextval,'카리나',167.8,95,90,'햇님반');
+insert into student values (seq_stu.nextval,'나연',167.8,95,90,'햇님반');
+insert into student values (seq_stu.nextval,'윈터',167.8,95,90,'달님반');
+
+
+
+--커밋하기
+commit;
+
+
+
+--num>=4 이상 모두 삭제
+delete from student where num>=1;
+select * from student;
+
+
+
+-- num 이 3인 사람의 java점수를 99로 ,ban을 '달님반' 으로 수정
+update student set java=65,ban='달님반' where num=3;
+update student set java=40 where num=4;
+update student set java=50 where num=5;
+update student set java=60 where num=6;
+update student set java=30 where num=7;
+update student set java=70 where num=8;
+update student set java=80 where num=2;
+
+
+
+--num=2 인사람의 키를 188.9 로 수정
+update student set height=188.9 where num=2;
+
+
+
+--num=2 인 데이타 삭제
+delete from student where num=2;
+
+--데이타 3개정도 더 추가
+
+
+--조회 : 이름  반 자바  스프링  총점  평균 -총점이 높은 사람부터 출력
+
+select name,ban,java,spring,java+spring 총점,(java+spring)/2 평균 from student order by 총점 desc;
