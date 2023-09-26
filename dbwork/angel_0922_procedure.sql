@@ -160,3 +160,4 @@ end;
 exec addupdate('조끼',34000,'purple');
 exec addupdate('양복정장',150000,'blue');
 exec addupdate('양복정장3',150000,'gray');
+commit;

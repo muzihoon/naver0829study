@@ -24,21 +24,25 @@ public class Ex03_MysqlGroupSawon {
 	
 	public void sawonBunseok()
 	{
-		
+		// Call by Value 예제 복습. 다른 클래스에서 아래의 변수를 닫을 수 있다. 
+		// 참조변수는 주소가 가기 때문에
 		Connection conn = null;
-		
 		Statement stmt = null;
 		ResultSet rs = null;
 		//rs.next() : 다음 데이터로 이동을 하고 true 반환, 이동할 데이터가 없을 경우 false 반환
 		
-		String sql = "select buseo,count(*) count, max(score) maxscore, min(score) minscore, "
-				+ "avg(score) avgscore from sawon group by buseo";
+		String sql = "select buseo,"
+				+ "count(*) count, "
+				+ "max(score) maxscore,"
+				+ " min(score) minscore, "
+				+ "avg(score) avgscore "
+				+ "from sawon group by buseo";
 		
 		try {
 			conn=DriverManager.getConnection(MYSQL_URL, "root", "1234");
 			System.out.println("MySQL 연결 성공");
 			
-			stmt = conn.createStatement();
+			stmt = conn.createStatement();// 성공한 커넥션으로 스테이트먼트를 만든다.
 			rs = stmt.executeQuery(sql);
 			
 			System.out.println("부서명\t인원수\t최고점수\t최소점수\t평균");
@@ -50,7 +54,7 @@ public class Ex03_MysqlGroupSawon {
 				int count = rs.getInt("count");
 				int maxscore = rs.getInt("maxscore");
 				int minscore = rs.getInt("minscore");
-				int avg = rs.getInt("avgscore");
+				double avg = rs.getDouble("avgscore");
 				
 				System.out.println(deptName+"\t"+count+"\t"+maxscore+"\t\t"+minscore+"\t\t"+avg);
 			}
