@@ -136,7 +136,6 @@ public class Ex07_SawonCrud {
 		
 		String sql = """
 					update sawon set name = ?, score = ?, buseo = ? where num = ?
-					
 				""";
 		
 		Connection conn = db.getMysqlConnection();

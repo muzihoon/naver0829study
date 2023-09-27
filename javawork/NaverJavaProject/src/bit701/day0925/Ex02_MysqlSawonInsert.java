@@ -28,17 +28,17 @@ public class Ex02_MysqlSawonInsert {
 		
 		// 테스트 완료
 		
-		Connection conn = null;
-		Statement stmt = null;
+		Connection conn = null; // DB 커넥션 담당 객체 생성
+		Statement stmt = null; // SQL 쿼리를 실행할 객체 생성/ jdbc에서 DB와 상호작용할때 필요한 객체임
 		
 		//db 연결
-		conn = db.getMysqlConnection();
+		conn = db.getMysqlConnection(); // 내가 만들어뒀던 메서드로 MySQL 에 접속함 
 		
 		//statement
 		try {
-			stmt = conn.createStatement();
+			stmt = conn.createStatement();//SQL 쿼리 실행용 메서드
 			
-			stmt.execute(sql);
+			stmt.execute(sql); // // 실행한다.
 			System.out.println("sawon 에 데이터 추가 성공");
 		} catch (SQLException e) {
 			System.out.println("insert sql 문 오류 :"+e.getMessage());;
