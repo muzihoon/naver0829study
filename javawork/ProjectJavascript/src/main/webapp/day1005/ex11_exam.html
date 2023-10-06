@@ -13,6 +13,7 @@
         
         .photo{
 			border: 10px double aquamarine;
+			box-shadow:5px orange;
 		}
 </style>
 <script>
@@ -20,7 +21,13 @@
 			//문제1 : h3 아래 b의 글꼴을 Single Day로, 사이즈를 25px 로 변경한다.
 					// 글자색을 red로 변경한다.
 					
-			$("h3>b").css("fontFamily","Single Day").css("fontSize","25px").css("color","red");
+		  //$("h3>b").css("fontFamily","Single Day").css("fontSize","25px").css("color","red");
+		  
+			$("h3>b").css({
+				"fontFamily":"Single Day",
+				"fontSize":"25px",
+				"color":"red"
+			})
 					
 			//문제2 : h3 아래의 span 태그의 값을 클릭하면 안의 텍스트를 읽어온다.
 			$("h3>span").click(function(){
@@ -38,10 +45,7 @@
 				$(this).addClass("photo");
 			},function(){
 				$(this).removeClass("photo")
-				
 			});
-			
-						
 				});
 </script>
 </head>

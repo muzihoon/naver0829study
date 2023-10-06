@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+        body * {
+            font-family: 'Jua';
+        }
+        
+        div.moviestar>figure.photo{
+			float: left;
+			margin-right: 10px;
+		}
+		div.moviestar>figure.photo>img{
+			width: 130;
+			height: 160px;
+		}
+        div.moviestar2>figure.photo{
+			float: left;
+			margin-right: 10px;
+		}
+		div.moviestar2>figure.photo>img{
+			width: 130;
+			height: 160px;
+		}
+		
+		
+		
+</style>
+<script>
+		$(function(){
+			let data = [
+			{"name":"카리나","photo":"../image/21.jpg","addr":"강남구 역삼동","font":"Gamja Flower"},
+			{"name":"박보영","photo":"../image/12.jpg","addr":"강남구 방배동","font":"Nanum Pen Script"},
+			{"name":"신민아","photo":"../image/17.jpg","addr":"강남구 서초동","font":"Jua"},
+			{"name":"김우빈","photo":"../image/2.jpg","addr":"강남구 삼성동","font":"Single Day"},
+			{"name":"수지","photo":"../image/19.jpg","addr":"강서구 목동","font":"Permanet Marker"},
+			];
+			
+			//figure 를 이용해서 사진과 이름 주소를 넣고 글꼴을 적용시켜주세요.
+			//class = "moviestar"추가하기 
+			$.each(data,function(index,item){
+			let s = 
+			`
+			<figure class="photo">
+				<img src="${item.photo}">
+				<figcaption>
+					<h5 style="font-family:${item.font}">${item.name}</h3>	
+					<h6 style="font-family:${item.font}">${item.addr}</h3>	
+				</figcaption>
+			</figure>
+			`;
+			
+			$("div.moviestar").append(s)
+			/////////////////////////////////////////////////
+			
+			
+			let data2 = 
+			//객체 하나인데 photo라는 키값에 배열이 들어가있는것.
+			{"photo":
+				[
+			{"name":"카리나","photo":"../image/21.jpg","addr":"강남구 역삼동","font":"Gamja Flower"},
+			{"name":"박보영","photo":"../image/12.jpg","addr":"강남구 방배동","font":"Nanum Pen Script"},
+			{"name":"신민아","photo":"../image/17.jpg","addr":"강남구 서초동","font":"Jua"},
+			{"name":"김우빈","photo":"../image/2.jpg","addr":"강남구 삼성동","font":"Single Day"},
+			{"name":"수지","photo":"../image/19.jpg","addr":"강서구 목동","font":"Permanet Marker"},
+			]
+			
+			
+			};
+			
+			$.each(data2.photo,function(index,item){
+			let s = 
+			`
+			<figure class="photo">
+				<img src="${item.photo}">
+				<figcaption>
+					<h5 style="font-family:${item.font}">${item.name}</h3>	
+					<h6 style="font-family:${item.font}">${item.addr}</h3>	
+				</figcaption>
+			</figure>
+			`;
+			
+			$("div.moviestar2").append(s);
+		});
+		
+		});
+	});
+</script>
+</head>
+<body>
+ 	<div class="moviestar"></div>
+ 	<hr style="clear:both">
+ 	<div class="moviestar2"></div>
+</body>
+</html>
